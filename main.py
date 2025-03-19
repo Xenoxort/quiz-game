@@ -1,20 +1,14 @@
-import random
-from data import question_data
+from question_model import Question
 
-remaining_questions = question_data.copy()
-n_questions = len(question_data)
-
-now = 0
+q = 0
 score = 0
 game_on = True
 
-while game_on:
-    now += 1
-    current_data = random.choice(remaining_questions)
-    current_question = current_data["text"]
-    current_answer = current_data["answer"]
+my_question = Question()
 
-    player_answer = input(f"Q.{now}: {current_question} (True/False)?: ")
+while game_on:
+    current_answer, player_answer = my_question.pick_question()
+    q += 1
 
     if player_answer == "off":
         game_on = False
@@ -28,14 +22,12 @@ while game_on:
             print("That's wrong.")
 
         print(f"The correct answer was: {current_answer}.")
-        print(f"Your current score is: {score}/{now}")
+        print(f"Your current score is: {score}/{q}")
 
-        remaining_questions.remove(current_data)
 
-        if len(remaining_questions) == 0:
+        if q == 12:
             game_on = False
             print("Game over! Thanks for playing.")
-        #print(len(remaining_questions))
 
 
 
