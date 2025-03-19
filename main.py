@@ -1,8 +1,8 @@
 import random
-import data
+from data import question_data
 
-remaining_questions = data.question_data.copy()
-n_questions = len(data.question_data)
+remaining_questions = question_data.copy()
+n_questions = len(question_data)
 
 now = 1
 game_on = True
