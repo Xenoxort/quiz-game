@@ -15,6 +15,7 @@ class Question:
         player_answer = input(f"Q.{self.now}: {current_question} (True/False)?: ")
         self.remaining_questions.remove(current_data)
 
-        return current_answer, player_answer
+        return current_answer, player_answer, self.now
+
 
 
